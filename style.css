@@ -10,67 +10,115 @@ body {
   padding-top: 90px;
 }
 
+.navbar {
+  /* pulls everything down to push up against bottom border */
+  padding-bottom: 0;
+
+  /* allows ??? to control the horizontal position */
+  padding-left: 0;
+
+  /* creates solid line for the bottom border  */
+  border-bottom: solid;
+  border-bottom-color: #ccc;
+}
+
+.navbar-title {
+  background-color: #8F6467;
+  padding: 15px;
+  font-size: 30px;
+  color: #fff !important; /* TODO can we do this without the !important */
+}
+
+li {
+  border-right: 1px solid #bbb;
+}
+
+li:last-child {
+  border-right: none;
+}
+
+/* container for nav header */
 .container-fluid {
   padding-left: 5%;
   padding-right: 5%;
+
 }
 
-h1,h4 {
-  text-align: center;
-  background-color: #48AAD4 
+.nav-link {
+  text-decoration: none;
+  color: #777 !important;
 }
 
-.row {
-  /* adding spacing between rows */
-  padding-top: 3px;
-  padding-bottom: 3px;
+/* Change the color of links on hover */
+.nav-link:hover {
+  /* question how do i impact these values without using important */
+  background-color: #4Cabc2 !important;
+  color: #fff !important;
 }
 
-input {
- width: 100%;
+/* this is not working */
+.nav-link:after { 
+  border-right: solid 1px;
+  border-right-color: #c7c7c7;
 }
 
-.userinput {
-  /* pull responses to left so it looks better */
-  padding-left: 0px;
-  align-content: left;
+#details {
+  background-color: #73919b;  
+  /* provides spacing between the top and bottom nav bars and the content */
+  margin-top: 20px;
+  margin-bottom: 80px;
+
+  /* provide spaceing around the text */
+  padding: 20px;
+} 
+
+#answer-image {
+  float: left;
+  padding-right: 1em;
+  padding-top: 0.25em;
 }
 
-.center {
-  align-content: center;
-  text-align: center;
-}
-
-.side-section {
-  background-color: #AAD4A3;
-  border: solid;
-}
-
-#output {
-  text-align: left;
-  padding-top: 5%;
-  word-wrap: break-word;
-  border: dashed grey;
+input, textarea {
   width: 100%;
-  background-color: lightgrey;
-  height: 100%;
 }
 
-.text-align {
-  text-align: right !important; 
+.footer {
+  /* set text properties */
+  background-color: #666;
+  
+  /* sets height of footer*/
+  height: 10%;
+  
+  /* sets properties for footer border*/
+  border-top: solid;
+  border-top-color: #4aaaa5;
+  border-top-width: 8px;
 }
 
-/* Width at 768px and below */
-@media screen and (max-width: 768px) {
+.footer-text {
+  /* forces text across the entire screen so it has a center */
+  width: 100%;
+  text-align: center;
 
-  .text-align {
-    text-align: left !important; 
+  font-size: 10px;
+  color:#fff; 
+}
+
+/* media query for screen size to be applied to center text to switch at same time as navbar */
+@media (max-width: 768px) {
+  .container-fluid {
+    /* removes paddding on either side */
+    padding-left: 0;
+    padding-right: 0;
   }
 
-  input {
-    width: 100px;
+/* removes verticle lines between text */
+  li {
+    border-right: none;
   }
-  #sidebar {
-    margin-top: 40px;
+
+/* collapses space between menu options when they stack vertically*/
+  .nav-link{
+    padding: 1px;
   }
 }
