@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./style.css" />
+    
+    <title>Gabes JavaScript Quiz</title>
+  </head>
+  <body>
+    <H1>How Well Do You Know Javascript</H1>
+    <div class="container-fluid" >
+      <!-- first row contains the list of input
+      using a gird to ensure that they line up nicely -->
+      <div class="row">
+        <!-- 6 row to take half the scree -->
+        <div class="col-sm-6 side-section">
+          <!-- start input section -->
+          <div id="container-fluid">
+            <div class="row">
+              <div class="col-sm-12 text-align center">
+                <h4>Specify Criteria</h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-8 text-align criteria">
+                Min length:
+              </div>
+              <div class="col-sm-4 userinput">
+                <input type="number" id="minLength" name="minLength" size=6 required> </input>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-8 text-align criteria">
+                Max length:
+              </div>
+              <div class="col-sm-4 userinput">
+                <input type="number" id="maxLength" name="maxLength"  required> </input>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-8 text-align criteria">
+                  Include Special Characters?
+              </div>
+              <div class="col-sm-1 userinput">
+                <input class="div-check-input" type="checkbox" value="" id="specialChars">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-8 text-align criteria">
+                Include Numeric Characters?
+              </div>
+              <div class="col-sm-1 userinput">
+                <input class="div-check-input" type="checkbox" value="" id="numericChars">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-8 text-align criteria">
+                Include Lower Case?
+              </div>
+              <div class="col-sm-1 userinput">
+                <input class="div-check-input" type="checkbox" value="" id="lowerCase">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-8 text-align criteria">
+                Include Upper Case?
+              </div>
+              <div class="col-sm-1 userinput">
+                <input class="div-check-input" type="checkbox" value="" id="upperCase">
+              </div>
+            </div>
+          </div>
+            <div class="row">
+              <div class="col-sm-12 text-align center">
+                <button onclick="passwordGenerator()" class="center btn btn-secondary ">Generate Password</button>
+              </div>
+            </div>
+        </div>
+        <!-- right side of screen for output -->
+        <div class="col-sm-6 side-section">
+          <div class="row">
+            <div class="col-sm-12">
+              <h4 id="output-title"> Generated Password </h4>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <p id="output"></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 text-align center">
+              <button onclick="copyPassword()" class="center btn btn-secondary" id="copy">Copy to Clipboard</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- inport JavaScript-->
+    <script type="text/javascript"></script>
+  </body>
+</html>

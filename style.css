@@ -1,0 +1,76 @@
+body {
+  /* image for background */
+  background-image: url('./images/low_contrast_linen.png');
+
+  /* font parameters */
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1em;
+
+  /* added padding to prevent navbar overlap. (100 based on browser inpector of size) */
+  padding-top: 90px;
+}
+
+.container-fluid {
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+h1,h4 {
+  text-align: center;
+  background-color: #48AAD4 
+}
+
+.row {
+  /* adding spacing between rows */
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+input {
+ width: 100%;
+}
+
+.userinput {
+  /* pull responses to left so it looks better */
+  padding-left: 0px;
+  align-content: left;
+}
+
+.center {
+  align-content: center;
+  text-align: center;
+}
+
+.side-section {
+  background-color: #AAD4A3;
+  border: solid;
+}
+
+#output {
+  text-align: left;
+  padding-top: 5%;
+  word-wrap: break-word;
+  border: dashed grey;
+  width: 100%;
+  background-color: lightgrey;
+  height: 100%;
+}
+
+.text-align {
+  text-align: right !important; 
+}
+
+/* Width at 768px and below */
+@media screen and (max-width: 768px) {
+
+  .text-align {
+    text-align: left !important; 
+  }
+
+  input {
+    width: 100px;
+  }
+  #sidebar {
+    margin-top: 40px;
+  }
+}
