@@ -6,32 +6,33 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+    <link 
     
     <title>Gabes JavaScript Quiz</title>
   </head>
   <body>
     <!-- Start header -->
-    <nav class="navbar navbar-expand-md bg-light fixed-top">
+    <nav class="navbar navbar-expand-md fixed-top">
       <div class="container-fluid">
-        <div class="nav-item highscore"> View High Scores</div>
-        <div class="navbar-header">
-          <div class="navbar-title ">Timed Quiz Game</div>
-        </div>
-        <div class="nav-item timer">timer</div>
+        <div id="highscore" class="nav-item nav-link"> View High Scores</div>
+          <h1 id="navbar-title">Timed Quiz Game</h1>
+        <div id="timer" class="nav-item">timer</div>
       </div>
     </nav>
     <!-- end header -->
     <!-- start Content -->
     <div class="container-fluid">
-      <section id="details">
-        <p id=Intro> intro</p>
-        <p id=question> question </p>
-        <p>
-          <img id="result-image" style="width:20%;height:20%;" >
-        </p>
-        <p id=answers> answers</p>
-      </section>
 <!-- need a place for the intro instructions and quiz -->
+      <section id="details">
+        <p class="main-heading"> This game gives you the opportunity to take a time quiz!</p>
+        <p class="main-body">
+           You will have 15 seconds to answer each question. 
+           If you answer correctly you will score points. 
+           The quicker you answer the more points you will score. 
+           If you score incorrectly you will not lose points, but you will be penalized time.
+        </p>
+        <button id="startQuiz">Start Quiz</button>
+      </section>
     </div>    
   <!-- End Content -->
 
