@@ -74,6 +74,10 @@ body {
   /* TODO style buttom */
 }
 
+.hidden {
+  visibility: hidden;
+}
+
 .footer {
   /* set text properties */
   background-color: #666;

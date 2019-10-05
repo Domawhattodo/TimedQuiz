@@ -1,28 +1,71 @@
 // pull in page objects
 let highscoreDiv = document.querySelector("#highscore");
 let timerDiv = document.querySelector("#timer");
-let mainHeadEl = document.querySelector("#main-heading");
-let mainBodyEl = document.querySelector("#main-body");
-let startButton = document.querySelector("#startQuiz");
+let mainEl = document.querySelector("#details");
 
+let questionEl = document.querySelector("#question")
+let answersListEl = document.querySelector("#answer-list")
 
 // set global variables
 let test = 1;
 let score = 0;
 
+// draw instruction
+init();
+
+var startButton = document.querySelector("#startQuiz");
+// startButton.addEventListener("click", playQuiz);
+
+// function to display instructions
+function init() {
+  clearDetails();
+  // creates Heading element for main page
+  let heading = document.createElement("p");
+  heading.setAttribute("id", "main-heading");
+  heading.textContent = "This game gives you the opportunity to take a time quiz!";
+
+  // creates elements with the instructions for the game
+  let instructions = document.createElement("p");
+  instructions.setAttribute("id", "instructions");
+  instructions.textContent = " You will have 15 seconds to answer each question. If you answer correctly you will score points. The quicker you answer the more points you will score. If you score incorrectly you will not lose points, but you will be penalized time."; 
+
+  // creates button to start the game
+  let startQuiz = document.createElement("button");
+  startQuiz.setAttribute("id", "startQuiz");
+  startQuiz.textContent= "Start Quiz";
+
+  mainEl.appendChild(heading);
+  mainEl.appendChild(instructions);
+  mainEl.appendChild(startQuiz);
+}
+
+// function to clear details element of all children
+function clearDetails() {
+  mainEl.innerHTML = "";
+}
+
 //start game
-function startQuiz() {
-
+function playQuiz() {
+  if (test) { console.log("--- playQuiz ---"); }
+  // select quiz randomize questions
   let quiz = setUpQuestions(questions);
-  console.log(quiz);
+  
+  // quiz.forEach(presentQuestion());
+  // interact through randized questions
+  for ( i=0; i<quiz.length; i++ ) {
+    //displays question 
+    //presentQuestion(quiz[i]);
+    // return;
+  }
 
-  if (test) { console.log("quiz length: " + quiz.length); }
-  if (test) { console.log("quiz[2].title: " + quiz[2].title); }
+  // if (test) { console.log("quiz length: " + quiz.length); }
+  // if (test) { console.log("quiz[2].title: " + quiz[2].title); }
   
 }
 
 // function to get random question out of array
 function setUpQuestions(arr) {
+  // if (test) {console.log("--- setUpQuestions ---");}
   //TODO get different topic
   // TODO randomize questions
   let ranQuest = [];
@@ -34,9 +77,27 @@ function setUpQuestions(arr) {
 }
 
 // function to redraw screen with  question 
-function presentQuestion() {
+function presentQuestion(cur) {
+  if (test) {console.log("--- presentQuestion ---");}
+  if (test) {console.log(cur.title);}
+   
+  questionEl.textContent = cur.title;
 
+  if (test) {console.log("cur.choices[i] " + cur.choices);}
+
+  for( let i=0; i<cur.choices.length; i++ ) {
+    // creates variable for each choice item
+    let listChoice = document.createElement("li");
+    // adds data value
+    listChoice.setAttribute("choice-value", cur.choices[i]);
+    listChoice.textContent = cur.choices[i];
+
+    //add choice to page
+    answersListEl.appendChild(listChoice)
+  }
+  
 }
+
 
 // function for scoreing and testing correctness
 function setScore() {
@@ -64,7 +125,7 @@ function saveScore() {
 }
 
 // eventListener for start of play
-startButton.addEventListener("click", startQuiz)
+startButton.addEventListener("click", playQuiz);
 
 // event listener to question answering
 
