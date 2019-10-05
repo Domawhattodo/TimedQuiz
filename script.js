@@ -3,8 +3,8 @@ let highscoreDiv = document.querySelector("#highscore");
 let timerDiv = document.querySelector("#timer");
 let mainEl = document.querySelector("#details");
 
-let questionEl = document.querySelector("#question")
-let answersListEl = document.querySelector("#answer-list")
+// let questionEl = document.querySelector("#question")
+// let answersListEl = document.querySelector("#answer-list")
 
 // set global variables
 let test = 1;
@@ -14,7 +14,6 @@ let score = 0;
 init();
 
 var startButton = document.querySelector("#startQuiz");
-// startButton.addEventListener("click", playQuiz);
 
 // function to display instructions
 function init() {
@@ -54,7 +53,7 @@ function playQuiz() {
   // interact through randized questions
   for ( i=0; i<quiz.length; i++ ) {
     //displays question 
-    //presentQuestion(quiz[i]);
+    presentQuestion(quiz[i]);
     // return;
   }
 
@@ -79,11 +78,15 @@ function setUpQuestions(arr) {
 // function to redraw screen with  question 
 function presentQuestion(cur) {
   if (test) {console.log("--- presentQuestion ---");}
-  if (test) {console.log(cur.title);}
-   
-  questionEl.textContent = cur.title;
-
   if (test) {console.log("cur.choices[i] " + cur.choices);}
+  clearDetails();
+   
+  let question = document.createElement("h1");
+  // adds data value
+  question.setAttribute("question", cur.title);
+  question.textContent = cur.title;
+  mainEl.appendChild(question)
+
 
   for( let i=0; i<cur.choices.length; i++ ) {
     // creates variable for each choice item
@@ -93,7 +96,7 @@ function presentQuestion(cur) {
     listChoice.textContent = cur.choices[i];
 
     //add choice to page
-    answersListEl.appendChild(listChoice)
+    mainEl.appendChild(listChoice)
   }
   
 }
