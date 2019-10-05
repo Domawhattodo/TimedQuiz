@@ -1,14 +1,24 @@
-// pull in page objects
+// p;ull in page objects
 let highscoreDiv = document.querySelector("#highscore");
-let timerDiv = document.querySelector("#timer");
+let gameTimerEl = document.querySelector("#gameTimer");
+let quesTimerEl = document.querySelector("#quesTimer");
 let mainEl = document.querySelector("#details");
+
 
 // let questionEl = document.querySelector("#question")
 // let answersListEl = document.querySelector("#answer-list")
 
 // set global variables
-let test = 1;
-let score = 0;
+var test = 1;
+var score = 0;
+
+var gameDuration = 0;
+var gameSecElapsed = 0;
+var gameInterval;
+
+var questionDuration = 15;
+var questionSecElapsed = 0;
+var questionInterval;
 
 // draw instruction
 init();
@@ -48,8 +58,12 @@ function playQuiz() {
   if (test) { console.log("--- playQuiz ---"); }
   // select quiz randomize questions
   let quiz = setUpQuestions(questions);
+  gameDuration = quiz.length * 15;
   
-  // quiz.forEach(presentQuestion());
+  // Start Game timer here
+  startGameTimer();
+  renderTime();
+
   // interact through randized questions
   for ( i=0; i<quiz.length; i++ ) {
     //displays question 
@@ -87,6 +101,10 @@ function presentQuestion(cur) {
   question.textContent = cur.title;
   mainEl.appendChild(question)
 
+  // create list as container to listen for answers
+  let choiceBox = document.createElement("ul");
+  choiceBox.setAttribute("id","choiceBox");
+  mainEl.appendChild(choiceBox);
 
   for( let i=0; i<cur.choices.length; i++ ) {
     // creates variable for each choice item
@@ -94,27 +112,81 @@ function presentQuestion(cur) {
     // adds data value
     listChoice.setAttribute("choice-value", cur.choices[i]);
     listChoice.textContent = cur.choices[i];
-
     //add choice to page
-    mainEl.appendChild(listChoice)
+    choiceBox.appendChild(listChoice)
   }
-  
+
+  userResponse();
 }
 
-
+//function to wait for answer, set timer on 
+function userResponse() {
+  startQuestionTimer();
+  // get answer from user
+  choiceBox.addEventListener("click", playQuiz);
+}
 // function for scoreing and testing correctness
 function setScore() {
 
 }
 
 // function to set time for game timer
-function setGameTimer() {
+function setGameTime() {
+  if (test) { console.log("--- setGameTime ---"); }
+  if (test) { console.log("gameDuration " + gameDuration); }
 
+  clearInterval(gameInterval);
+  gameSeconds = gameDuration;
 }
 
 // function to set time question timer
-function setQuestionTimer() {
+function setQuestionTime() {
+  clearInterval(questionInterval);
+  questionDuration = 15;
+}
 
+function renderTime() {
+  if (test) { console.log(" --- renderTime --- "); }
+  if (test) { console.log("gameSecElapsed " + gameSeconds); }
+  if (test) { console.log("gameDuration " + gameDuration); }
+  if (test) { console.log("questionSecElapsed " + questionSecElapsed); }
+  if (test) { console.log("questionDuration " + questionDuration); }
+
+  gameTimerEl.textContent = gameDuration - gameSecElapsed;
+  quesTimerEl.textContent = questionDuration - questionSecElapsed;
+
+    // stopTime();
+}
+
+function startGameTimer () {
+  if (test) { console.log("--- startGameTimer ---"); }
+  setGameTime();
+
+  gameInterval = setInterval(function() {
+    gameSecElapsed++; 
+    renderTime();
+  }, 1000);
+}
+
+function startQuestionTimer () {
+  setQuestionTime();
+
+  questionInterval = setInterval(function() {
+    questionSecElapsed++; 
+    renderTime();
+  }, 1000);
+}
+
+function penilizeGameTime() {
+
+}
+
+function stopTime() {
+  gameSeconds = 0;
+  questionSeconds = 0;
+  setGameTime();
+  setQuestionTime();
+  renderTime();
 }
 
 // function of end of game
@@ -131,5 +203,3 @@ function saveScore() {
 startButton.addEventListener("click", playQuiz);
 
 // event listener to question answering
-
-

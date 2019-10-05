@@ -22,6 +22,7 @@ body {
   /* creates solid line for the bottom border  */
   border-bottom: solid;
   border-bottom-color: #ccc;
+  width: 100%;
 }
 
 #navbar-title {
@@ -34,7 +35,6 @@ body {
 .container-fluid {
   padding-left: 5%;
   padding-right: 5%;
-
 }
 
 .nav-link {
@@ -53,6 +53,10 @@ body {
   color: #666;
 }
 
+.right {
+ 
+}
+
 #details {
   /* background-color: #73919b;   */
   background-color: #b6d7e2;  
@@ -63,6 +67,7 @@ body {
   /* provide spaceing around the text */
   padding: 40px;
 } 
+ 
 
 li {
   height: 50px;

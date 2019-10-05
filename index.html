@@ -13,9 +13,20 @@
     <!-- Start header -->
     <nav class="navbar navbar-expand-md fixed-top">
       <div class="container-fluid">
-        <div id="highscore" class="nav-item nav-link"> View High Scores</div>
-          <h1 id="navbar-title">Timed Quiz Game</h1>
-        <div id="timer" class="nav-item">timer</div>
+            <div id="highscore" class="nav-item nav-link"> View High Scores</div>
+            <h1 id="navbar-title">Timed Quiz Game</h1>
+            <!-- TODO get these on top of each other -->
+            <table id=timers>
+              <tr>
+                <td> Time left in Game: </td>
+                <td> <span id="gameTimer" class="nav-item">gtimer</span> </td>
+              </tr>
+               <tr>
+                <td>Time left for Question:</td>
+                <td> <span id="quesTimer" class="nav-item">qtimer</span> </td>
+              </tr>
+            </table>
+        </div>
       </div>
     </nav>
     <!-- end header -->
