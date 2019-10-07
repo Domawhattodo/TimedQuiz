@@ -10,7 +10,7 @@ let timerTab = document.querySelector("#timers");
 // let answersListEl = document.querySelector("#answer-list")
 
 // set global variables - how do we move these into localized
-var test = 1;
+var test = 0;
 var score = 0;
 var quiz = {};
 
@@ -83,7 +83,7 @@ function playQuiz() {
 
   // Start timers here
   gameDuration = quiz.length * 15;
-  console.log("duration g,q:",gameDuration,questionDuration);
+  if (test) { console.log("duration g,q:",gameDuration,questionDuration); }
 
   startGameTimer();
   renderTime();
@@ -208,7 +208,7 @@ function renderTime() {
   if ( (questionDuration - questionSecElapsed) < 1 ) {
     // game penelty for letting timer run out
     gameDuration -= 10;
-    console.log("too slow");
+    if (test) { console.log("too slow"); }
     presentQuestion();
   } 
 
@@ -291,14 +291,12 @@ function endOfGame() {
 
       //get highscores from memory
       let storedScores = JSON.parse(localStorage.getItem("highScores")); 
-      console.log("storedScore",storedScores);
+      if (test) { console.log("storedScore",storedScores); }
 
       if (storedScores !== null) { 
         storedScores.push(thisScore[0]); 
-        console.log("not null",storedScores);
       } else {
         storedScores = thisScore;
-        console.log("null",storedScores);
       }
 
       localStorage.setItem("highScores", JSON.stringify(storedScores));
@@ -322,19 +320,27 @@ function highScores() {
   mainEl.appendChild(heading);
 
   // Render a new li for each score
-  for (var i = 0; i < storedScores.length; i++) {
-    var s = storedScores[i];
+  // TODO check for this error 
+  if ( storedScores !== null ) {
+    for (var i = 0; i < storedScores.length; i++) {
+      var s = storedScores[i];
 
-    var p = document.createElement("p");
-    p.textContent = s.name + " " + s.score;
-    mainEl.appendChild(p);
+      var p = document.createElement("p");
+      p.textContent = s.name + " " + s.score;
+      mainEl.appendChild(p);
+    }
+  } else {
+      var p = document.createElement("p");
+      p.textContent =  "Your Initials Here!"
+      mainEl.appendChild(p);
   }
+
 
   // creates button to start the game
   let playAgain = document.createElement("button");
   playAgain.setAttribute("id", "playAgain");
   playAgain.setAttribute("class", "btn btn-secondary");
-  playAgain.textContent = "Play again";
+  playAgain.textContent = "Play!";
 
   mainEl.appendChild(playAgain);
 
