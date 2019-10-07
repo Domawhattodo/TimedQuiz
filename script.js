@@ -60,7 +60,7 @@ function clearDetails() {
 }
 
 function reset() {
-  var score = 0;
+  score = 0;
 
   gameDuration = 0;
   gameSecElapsed = 0;
@@ -280,11 +280,65 @@ function endOfGame() {
   mainEl.appendChild(par);
   mainEl.appendChild(playAgain);
 
-  score = 0;
+  playAgain.addEventListener("click", init);
+
+  initialsInput.addEventListener("input", function() {
+    initialsInput.value = initialsInput.value.toUpperCase();
+    if ( initialsInput.value.length === 3 ) { 
+
+      //create object for this score
+      let thisScore = [ { name: initialsInput.value, score: score } ]; 
+
+      //get highscores from memory
+      let storedScores = JSON.parse(localStorage.getItem("highScores")); 
+      console.log("storedScore",storedScores);
+
+      if (storedScores !== null) { 
+        storedScores.push(thisScore[0]); 
+        console.log("not null",storedScores);
+      } else {
+        storedScores = thisScore;
+        console.log("null",storedScores);
+      }
+
+      localStorage.setItem("highScores", JSON.stringify(storedScores));
+      highScores();
+    }
+  });
+}
+
+function highScores() {
+  stopTime();
+  clearDetails();
+
+  timerTab.setAttribute("style", "visibility: hidden;");
+
+  let storedScores = JSON.parse(localStorage.getItem("highScores")); 
+
+  let heading = document.createElement("p");
+  heading.setAttribute("id", "main-heading");
+  heading.textContent = "High Score Hall of Fame";
+
+  mainEl.appendChild(heading);
+
+  // Render a new li for each score
+  for (var i = 0; i < storedScores.length; i++) {
+    var s = storedScores[i];
+
+    var p = document.createElement("p");
+    p.textContent = s.name + " " + s.score;
+    mainEl.appendChild(p);
+  }
+
+  // creates button to start the game
+  let playAgain = document.createElement("button");
+  playAgain.setAttribute("id", "playAgain");
+  playAgain.setAttribute("class", "btn btn-secondary");
+  playAgain.textContent = "Play again";
+
+  mainEl.appendChild(playAgain);
+
   playAgain.addEventListener("click", init);
 }
 
-// save high score to browser memery
-function saveScore() {
-
-}
+highscoreDiv.addEventListener("click", highScores);
