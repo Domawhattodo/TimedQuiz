@@ -81,18 +81,6 @@ li {
   list-style-type: none;
 }
 
-/*
-li:before {
-  content: "\200B";
-  position: absolute;
-}
-
-li::after {
-  content: " ";
-  display: block;
-  clear: both;
-}
-  */
 li:hover {
   background-color: #9e9268;
 }
