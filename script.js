@@ -10,7 +10,7 @@ let timerTab = document.querySelector("#timers");
 // let answersListEl = document.querySelector("#answer-list")
 
 // set global variables - how do we move these into localized
-var test = true;
+var test = false;
 var score = 0;
 var quiz = {};
 var quizType = "";
@@ -170,7 +170,7 @@ function presentQuestion() {
     choiceBox.appendChild(listChoice)
   }
 
-  // if (test) { console.log("cur", curQuestion);}
+  if (test) { console.log("cur", curQuestion);}
 
   // get answer from user
   // using the anymous function delays the invocation of the scoreAnswer
@@ -187,7 +187,7 @@ function scoreAnswer(cur) {
   if ( e.matches("li")) {
     let selectedItem = e.textContent;
     // if (test) { console.log("check quiz " + quiz.length); }
-    // if (test) { console.log("selectedItem quiz " + selectedItem); }
+    if (test) { console.log("selectedItem quiz " + selectedItem); }
     // if (test) { console.log("selectedItem cur " , cur.answer); }
     if ( selectedItem === cur.answer ) {
       // if (test) { console.log("correct answer");}
@@ -198,31 +198,42 @@ function scoreAnswer(cur) {
       //penelty for being wrong
       gameDuration -= 10;
     }
-    // showAnswer(cur,selectedItem);
+  if (test) { console.log("sselected ",selectedItem);}
+    // showAnswers(cur,selectedItem);
     presentQuestion();
   }
 }
 
-// TODO incomplete needs to pause to display this
-function showAnswer (qanda,selected) {
+// TODO incomplete does not disply the correct color!!!! arghh
+function showAnswers(cur,selectedItem) {
   if (test) { console.log("--- showAnswer ---"); }
-  if (test) { console.log("cur",qanda);}
+  // if (test) { console.log("sa length",cur.choices.length);}
+  if (test) { console.log("sa qanda",cur);}
+  if (test) { console.log("sselected ",selectedItem);}
 
-  for (let i=0; i<qanda.choices.length; i++) {
 
-    let questid = "#questionNum-" + 1;
+  for (let i=0; i<cur.choices.length; i++) {
+    if (test) { console.log("sa in for ",i);}
+
+    let questid = "#questionNum-" + i;
+    // if (test) { console.log("sa qn", questid );}
     let questrow = document.querySelector(questid);
 
-    if (test) { console.log("cur",qanda);}
+    // if (test) { console.log("questrow",questrow);}
 
-    if ( qanda.choices[i] !== selected) {
-      questrow.setAttribute("background-color","red");
+    if (test) { console.log("saf selected" + selectedItem + "<");}
+    if (test) { console.log("saf color test >" +  cur.choices[i] +"<");}
+
+    if ( cur.choices[i] !== selectedItem ) {
+      if (test) { console.log("color test flase");}
+      questrow.setAttribute("style","background-color: red");
     } else {
-      questrow.setAttribute("background-color","green");
+      if (test) { console.log("color test true");}
+      questrow.setAttribute("style","background-color: green");
     }
-    // pause here for .5 sec
   }
-
+  // pause so user can see results
+  setTimeout(presentQuestion,10000);
 }
 
 // function to set time for game timer
@@ -235,7 +246,7 @@ function setGameTime() {
 
 
 function renderTime() {
-  if (test) { console.log(" --- renderTime --- "); }
+  // if (test) { console.log(" --- renderTime --- "); }
   // if (test) { console.log("gameSecElapsed " + gameSecElapsed); }
   // if (test) { console.log("gameDuration " + gameDuration); }
   // if (test) { console.log("questionDuration " + questionDuration); }
