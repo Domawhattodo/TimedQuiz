@@ -199,13 +199,13 @@ function scoreAnswer(cur) {
       gameDuration -= 10;
     }
   if (test) { console.log("sselected ",selectedItem);}
-    // showAnswers(cur,selectedItem);
-    presentQuestion();
+    showAnswers(cur);
+    // presentQuestion();
   }
 }
 
 // TODO incomplete does not disply the correct color!!!! arghh
-function showAnswers(cur,selectedItem) {
+function showAnswers(cur) {
   if (test) { console.log("--- showAnswer ---"); }
   // if (test) { console.log("sa length",cur.choices.length);}
   if (test) { console.log("sa qanda",cur);}
@@ -224,7 +224,7 @@ function showAnswers(cur,selectedItem) {
     if (test) { console.log("saf selected" + selectedItem + "<");}
     if (test) { console.log("saf color test >" +  cur.choices[i] +"<");}
 
-    if ( cur.choices[i] !== selectedItem ) {
+    if ( cur.choices[i] !== cur.answer ) {
       if (test) { console.log("color test flase");}
       questrow.setAttribute("style","background-color: red");
     } else {
@@ -233,7 +233,7 @@ function showAnswers(cur,selectedItem) {
     }
   }
   // pause so user can see results
-  setTimeout(presentQuestion,10000);
+  setTimeout(presentQuestion,500);
 }
 
 // function to set time for game timer

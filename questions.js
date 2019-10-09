@@ -17,7 +17,7 @@ var jsQuestions = [
   {
     title: "DOM is an abreviation for ____",
     choices: ["Data Object Mode", "Dumb Old Man", "Document Object Model", "Dutle Opo Mipsy"],
-    answer: "Data Object Model"
+    answer: "Document Object Model"
   },
   {
     title: "JavaScript is Textile Mark Up (TML) version of Java?",
