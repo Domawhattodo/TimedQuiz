@@ -44,12 +44,12 @@ var foodQuestions = [
   },
   {
     title: "Which is Tastiest?",
-    choices: ["Turkey and Cheese Cat Food", "Wild goat dog food", "Rabbit Food", "Roadkill Racccoon"],
+    choices: ["Turkey and Cheese Cat Food", "Wild goat dog food", "Rabbit Food", "Roadkill Raccoon"],
     answer: "Roadkill Raccoon"
   },
   {
     title: "Which pratice is NOT consider safe food practice",
     choices: ["Store meat in fridge", "Store meat in sun on front porch", "Eat chocolate", "Drink filtered water"],
-    answer: "100:66:2:1.2"
+    answer: "Store meat in sun on front porch"
   }
 ]
